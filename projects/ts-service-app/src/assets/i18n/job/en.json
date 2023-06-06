@@ -1,0 +1,14 @@
+{
+    "name": "Jobs",
+    "buttons": {},
+    "tabs": {},
+    "columns": {
+        "id": "ID",
+        "ticketId": "Ticket ID",
+        "serviceId": "Service ID",
+        "product": "Product",
+        "problem": "Problem",
+        "creator": "Creator"
+    },
+    "dialog": {}
+}

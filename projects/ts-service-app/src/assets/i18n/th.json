@@ -1,0 +1,112 @@
+{
+  "ok": "ตกลง",
+  "cancel": "ยกเลิก",
+  "save": "บันทึก",
+  "new": "สร้างใหม่",
+  "add": "เพิ่ม",
+  "refresh": "รีเฟรช",
+  "reset": "รีเซ็ท",
+  "back": "ถอยกลับ",
+  "view": "แสดง",
+  "edit": "แก้ไข",
+  "settings": "กำหนดค่า",
+  "delete": "ลบ",
+  "duplicate": "ทำสำเนา",
+  "filter": "ฟิลเตอร์",
+  "actions": "แอ็กชัน",
+  "noData": "ไม่พบข้อมูล",
+  "calculate": "คำนวณ",
+  "general": "ทั่วไป",
+  "download": "ดาวน์โหลด",
+  "upload": "อัปโหลด",
+  "export": "ส่งออก",
+  "xlsx": "XLSX",
+  "pdf": "PDF",
+  "csv": "CSV",
+  "moveUp": "เลื่อนขึ้น",
+  "moveDown": "เลื่อนลง",
+  "properties": "คุณสมบัติ",
+  "singleDevice": "รายอุปกรณ์",
+  "allDevices": "ทุกอุปกรณ์",
+  "rawData": "ข้อมูลดิบ",
+  "menu": {
+    "home": "หน้าหลัก",
+    "dashboard": "แดชบอร์ด",
+    "reports": {
+      "main": "รายงาน",
+      "basic": "รายงานพื้นฐาน"
+    },
+    "workflow": {
+      "main": "ผังระบบงาน",
+      "workflowManager": "จัดการผังระบบงาน"
+    },
+    "project": {
+      "main": "โครงการ",
+      "projectManager": "จัดการโครงการ"
+    },
+    "settings": {
+      "main": "กำหนดค่า",
+      "userSettings": "ผู้ใช้งาน"
+    },
+    "job": {
+      "main": "ใบงาน",
+      "่jobManager": "จัดการใบงาน",
+      "createJob": "สร้างใบงาน"
+    },
+    "userProfile": "บัญชีผู้ใช้งาน",
+    "about": "เกี่ยวกับ",
+    "login": "เข้าสู่ระบบ",
+    "logout": "ออกจากระบบ"
+  },
+  "title": {
+    "home": "หน้าหลัก",
+    "dashboard": "แดชบอร์ด",
+    "reports": {
+      "main": "รายงาน",
+      "basic": "รายงานพื้นฐาน"
+    },
+    "workflow": {
+      "main": "ผังระบบงาน",
+      "workflowManager": "จัดการผังระบบงาน"
+    },
+    "job": {
+      "main": "ใบงาน",
+      "jobManager": "จัดการใบงาน"
+    },
+    "settings": {
+      "main": "กำหนดค่า",
+      "userSettings": "ผู้ใช้งาน"
+    },
+    "userProfile": "บัญชีผู้ใช้งาน",
+    "about": "เกี่ยวกับ",
+    "login": "เข้าสู่ระบบ",
+    "logout": "ออกจากระบบ"
+  },
+  "calendar": {
+    "day": "วัน",
+    "date": "วันที่",
+    "week": "สัปดาห์",
+    "month": "เดือน",
+    "quarter": "ไตรมาส",
+    "year": "ปี"
+  },
+  "columnsGeneric": {
+    "id": "รหัส",
+    "name": "ชื่อ",
+    "description": "รายละเอียด",
+    "enable": "เปิดใช้งาน",
+    "ord": "ลำดับ",
+    "mode": "โหมด"
+  },
+  "tabGeneric": {
+    "general": "ทั่วไป",
+    "profile": "โพรไฟล์"
+  },
+  "dialog": {
+    "simpleConfirmDelete": {
+      "title": "ยืนยันการลบ ?",
+      "message": "คุณยืนยันว่าต้องการลบ '{{ name }}' ?",
+      "message2Params": "คุณยืนยันว่าต้องการลบ {{ param1 }} '{{ param2 }}' ?"
+    }
+  }
+}

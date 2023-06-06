@@ -1,0 +1,18 @@
+{
+    "name": "Jobs",
+    "buttons": {},
+    "tabs": {},
+    "columns": {
+        "id": "ID",
+        "ticketId": "รหัสใบงาน",
+        "serviceId": "หมายเลขบริการ",  
+        "jobType":"ชนิดของใบงาน",
+        "defaultJobType":"CM",
+        "creator":"ผู้เปิดเคส",
+        "problemType":"ประเภทปัญหา",
+        "problem":"ปัญหา",
+        "product":"อุปกรณ์",
+        "branchId":"รหัสสาขา"
+    },
+    "dialog": {}
+}

@@ -1,0 +1,18 @@
+{
+    "name": "บัญชีผู้ใช้งาน",
+    "buttons": {},
+    "tabs": {},
+    "columns": {
+        "username": "ชื่อผู้ใช้งาน",
+        "password": "รหัสผ่าน",
+        "firstName": "ชื่อจริง",
+        "lastName": "นามสกุล",
+        "userType": "ประเภทผู้ใช้งาน",
+        "email": "อีเมล์",
+        "mobile": "โทรศัพท์",
+        "defaultLanguage": "ภาษาตั้งต้น",
+        "defaultTheme": "ธีมตั้งต้น",
+        "sideMenuMode": "โหมดแถบเมนู"
+    },
+    "dialog": {}
+}

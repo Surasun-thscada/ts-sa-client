@@ -1,0 +1,132 @@
+<mat-progress-bar *ngIf="isShowLoading" mode="indeterminate"></mat-progress-bar>
+<h1 mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle><span>{{ sharedService.dialogTitle + '
+        > ' +
+        jobCreateCrudModel.jobs?.ticketId }}</span></h1>
+<div mat-dialog-content>
+    <mat-card appearance="outlined">
+        <mat-card-content>
+            <form #formSettingsUsersCrud="ngForm">
+                <mat-tab-group animationDuration="0ms">
+                    <mat-tab label="{{ 'tabGeneric.general' | transloco }}">
+                        <div class="form-container-generic">
+                            <div class="padding-top-20"></div>
+                            <div fxLayout="row" fxLayoutGap="15px">
+                                <mat-form-field appearance="fill" fxFlex>
+                                    <mat-label>{{ 'jc.columns.ticketId' | transloco }}</mat-label>
+                                    <input matInput name="ticketid"
+                                        placeholder="{{ 'jc.columns.ticketId' | transloco }}" required
+                                        #ticketid="ngModel" [(ngModel)]="jobCreateCrudModel.jobs!.ticketId">
+                                    <mat-error *ngIf="ticketid.hasError('required')">Ticket Id is required</mat-error>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill" fxFlex>
+                                    <mat-label>{{ 'jc.columns.serviceId' | transloco }}</mat-label>
+                                    <input matInput name="serviceid"
+                                        placeholder="{{ 'jc.columns.serviceId' | transloco }}" required
+                                        #serviceid="ngModel" [(ngModel)]="jobCreateCrudModel.jobs!.serviceId">
+                                    <mat-error *ngIf="serviceid.hasError('required')">Service Id is required</mat-error>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" fxFlex>
+                                    <mat-label>{{ 'jc.columns.jobType' | transloco }}</mat-label>
+                                    <mat-select name="jobType" placeholder="{{ 'jc.columns.defaultJobType' | transloco }}"
+                                        [compareWith]="compareSelectObject"
+                                        [(ngModel)]="jobCreateCrudModel.jobs!.jobType">
+                                        <mat-option *ngFor="let jobsType of jobCreateCrudModel.jobs!.listJobsType"
+                                            [value]="jobsType">
+                                            {{ jobsType.name }}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <input matInput [matDatepicker]="startDatePicker" placeholder="Start date">
+                                    <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+                                    <mat-datepicker #startDatePicker></mat-datepicker>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <input matInput [matDatepicker]="requireDatePicker" placeholder="Required date">
+                                    <mat-datepicker-toggle matSuffix [for]="requireDatePicker"></mat-datepicker-toggle>
+                                    <mat-datepicker #requireDatePicker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                            <div fxLayout="row" fxLayoutGap="15px">
+
+                                <mat-form-field appearance="fill" fxFlex>
+                                    <mat-label>{{ 'jc.columns.creator' | transloco }}</mat-label>
+                                    <input matInput name="creator"
+                                        placeholder="{{ 'jc.columns.creator' | transloco }}" required
+                                        #creator="ngModel" [(ngModel)]="jobCreateCrudModel.jobs!.creator" disabled>
+                                    <mat-error *ngIf="creator.hasError('required')">Creator is required</mat-error>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill" fxFlex>
+                                    <mat-label>{{ 'jc.columns.product' | transloco }}</mat-label>
+                                    <input matInput name="product"
+                                        placeholder="{{ 'jc.columns.product' | transloco }}" required
+                                        #product="ngModel" [(ngModel)]="jobCreateCrudModel.jobs!.product">
+                                    <mat-error *ngIf="product.hasError('required')">Ticket Id is required</mat-error>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill" fxFlex>
+                                    <mat-label>{{ 'jc.columns.problem' | transloco }}</mat-label>
+                                    <input matInput name="problem"
+                                        placeholder="{{ 'jc.columns.problem' | transloco }}" required
+                                        #problem="ngModel" [(ngModel)]="jobCreateCrudModel.jobs!.problem">
+                                    <mat-error *ngIf="problem.hasError('required')">Service Id is required</mat-error>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" fxFlex>
+                                    <mat-label>{{ 'jc.columns.problemType' | transloco }}</mat-label>
+                                    <mat-select name="problemType" placeholder="{{ 'jc.columns.problemType' | transloco }}"
+                                        [compareWith]="compareSelectObject"
+                                        [(ngModel)]="jobCreateCrudModel.jobs!.problemType">
+                                        <mat-option *ngFor="let problemType of jobCreateCrudModel.jobs!.listProblemType"
+                                            [value]="problemType">
+                                            {{ problemType.name }}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div fxLayout="row" fxLayoutGap="15px">
+                                <mat-form-field appearance="fill" fxFlex>
+                                    <mat-label>{{ 'jc.columns.branchId' | transloco }}</mat-label>
+                                    <input matInput name="branchId"
+                                        placeholder="{{ 'jc.columns.branchId' | transloco }}" required
+                                        #branchId="ngModel" [(ngModel)]="jobCreateCrudModel.jobs!.branchId"
+                                        (keydown.enter)="applyBranchChange($event)">
+                                    <mat-error *ngIf="branchId.hasError('required')">Branch Id is required</mat-error>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill" fxFlex>
+                                    <mat-label>{{ 'jc.columns.branchId' | transloco }}</mat-label>
+                                    <input matInput name="branchName"
+                                        placeholder="{{ 'jc.columns.branchId' | transloco }}" required
+                                        #branchName="ngModel" [(ngModel)]="jobCreateCrudModel!.branch!.id">
+                                    <mat-error *ngIf="branchName.hasError('required')">Branch Name is required</mat-error>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill" fxFlex>
+                                    <mat-label>{{ 'jc.columns.branchId' | transloco }}</mat-label>
+                                    <input matInput name="branchTel"
+                                        placeholder="{{ 'jc.columns.branchId' | transloco }}" required
+                                        #branchTel="ngModel" [(ngModel)]="jobCreateCrudModel!.branch!.id">
+                                    <mat-error *ngIf="branchTel.hasError('required')">Branch Name is required</mat-error>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill" fxFlex>
+                                    <mat-label>{{ 'jc.columns.branchId' | transloco }}</mat-label>
+                                    <input matInput name="branchTelAdsl"
+                                        placeholder="{{ 'jc.columns.branchId' | transloco }}" required
+                                        #branchTelAdsl="ngModel" [(ngModel)]="jobCreateCrudModel!.branch!.id">
+                                    <mat-error *ngIf="branchTelAdsl.hasError('required')">Branch Name is required</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </mat-tab>
+                </mat-tab-group>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
+<div mat-dialog-actions>
+    <div class="padding-left-20 padding-bottom-10">
+        <button mat-raised-button aria-label="Save" (click)="save()" [disabled]="!formSettingsUsersCrud.valid">
+            <mat-icon>save</mat-icon>Save
+        </button>
+        <button mat-raised-button aria-label="Cancel" (click)="cancel()">
+            <mat-icon>cancel</mat-icon>Cancel
+        </button>
+    </div>
+</div>

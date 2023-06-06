@@ -1,0 +1,7 @@
+{
+    "login": "Login",
+    "logout": "Logout",
+    "loggedOnAs": "You are logged on as  {{ userInfo }}",
+    "username": "Username",
+    "password": "Password"
+}

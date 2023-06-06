@@ -1,0 +1,19 @@
+{
+    "name": "Jobs",
+    "buttons": {},
+    "tabs": {},
+    "columns": {
+        "id": "ID",
+        "ticketId": "Ticket ID",
+        "serviceId": "Service ID",
+        "jobType":"Job Type",
+        "defaultJobType":"CM",
+        "creator":"Creator",
+        "problemType":"Problem Type",
+        "problem":"Problem",
+        "product":"Product",
+        "branchId":"Branch Id"
+        
+    },
+    "dialog": {}
+}

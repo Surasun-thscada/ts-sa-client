@@ -1,0 +1,117 @@
+/* noto-sans-thai-100 - thai */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Noto Sans Thai';
+  font-style: normal;
+  font-weight: 100;
+  src: url('noto-sans-thai-v20-thai-100.eot'); /* IE9 Compat Modes */
+  src: url('noto-sans-thai-v20-thai-100.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('noto-sans-thai-v20-thai-100.woff2') format('woff2'), /* Super Modern Browsers */
+       url('noto-sans-thai-v20-thai-100.woff') format('woff'), /* Modern Browsers */
+       url('noto-sans-thai-v20-thai-100.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('noto-sans-thai-v20-thai-100.svg#NotoSansThai') format('svg'); /* Legacy iOS */
+}
+/* noto-sans-thai-200 - thai */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Noto Sans Thai';
+  font-style: normal;
+  font-weight: 200;
+  src: url('noto-sans-thai-v20-thai-200.eot'); /* IE9 Compat Modes */
+  src: url('noto-sans-thai-v20-thai-200.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('noto-sans-thai-v20-thai-200.woff2') format('woff2'), /* Super Modern Browsers */
+       url('noto-sans-thai-v20-thai-200.woff') format('woff'), /* Modern Browsers */
+       url('noto-sans-thai-v20-thai-200.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('noto-sans-thai-v20-thai-200.svg#NotoSansThai') format('svg'); /* Legacy iOS */
+}
+/* noto-sans-thai-300 - thai */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Noto Sans Thai';
+  font-style: normal;
+  font-weight: 300;
+  src: url('noto-sans-thai-v20-thai-300.eot'); /* IE9 Compat Modes */
+  src: url('noto-sans-thai-v20-thai-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('noto-sans-thai-v20-thai-300.woff2') format('woff2'), /* Super Modern Browsers */
+       url('noto-sans-thai-v20-thai-300.woff') format('woff'), /* Modern Browsers */
+       url('noto-sans-thai-v20-thai-300.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('noto-sans-thai-v20-thai-300.svg#NotoSansThai') format('svg'); /* Legacy iOS */
+}
+/* noto-sans-thai-regular - thai */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Noto Sans Thai';
+  font-style: normal;
+  font-weight: 400;
+  src: url('noto-sans-thai-v20-thai-regular.eot'); /* IE9 Compat Modes */
+  src: url('noto-sans-thai-v20-thai-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('noto-sans-thai-v20-thai-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('noto-sans-thai-v20-thai-regular.woff') format('woff'), /* Modern Browsers */
+       url('noto-sans-thai-v20-thai-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('noto-sans-thai-v20-thai-regular.svg#NotoSansThai') format('svg'); /* Legacy iOS */
+}
+/* noto-sans-thai-500 - thai */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Noto Sans Thai';
+  font-style: normal;
+  font-weight: 500;
+  src: url('noto-sans-thai-v20-thai-500.eot'); /* IE9 Compat Modes */
+  src: url('noto-sans-thai-v20-thai-500.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('noto-sans-thai-v20-thai-500.woff2') format('woff2'), /* Super Modern Browsers */
+       url('noto-sans-thai-v20-thai-500.woff') format('woff'), /* Modern Browsers */
+       url('noto-sans-thai-v20-thai-500.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('noto-sans-thai-v20-thai-500.svg#NotoSansThai') format('svg'); /* Legacy iOS */
+}
+/* noto-sans-thai-600 - thai */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Noto Sans Thai';
+  font-style: normal;
+  font-weight: 600;
+  src: url('noto-sans-thai-v20-thai-600.eot'); /* IE9 Compat Modes */
+  src: url('noto-sans-thai-v20-thai-600.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('noto-sans-thai-v20-thai-600.woff2') format('woff2'), /* Super Modern Browsers */
+       url('noto-sans-thai-v20-thai-600.woff') format('woff'), /* Modern Browsers */
+       url('noto-sans-thai-v20-thai-600.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('noto-sans-thai-v20-thai-600.svg#NotoSansThai') format('svg'); /* Legacy iOS */
+}
+/* noto-sans-thai-700 - thai */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Noto Sans Thai';
+  font-style: normal;
+  font-weight: 700;
+  src: url('noto-sans-thai-v20-thai-700.eot'); /* IE9 Compat Modes */
+  src: url('noto-sans-thai-v20-thai-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('noto-sans-thai-v20-thai-700.woff2') format('woff2'), /* Super Modern Browsers */
+       url('noto-sans-thai-v20-thai-700.woff') format('woff'), /* Modern Browsers */
+       url('noto-sans-thai-v20-thai-700.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('noto-sans-thai-v20-thai-700.svg#NotoSansThai') format('svg'); /* Legacy iOS */
+}
+/* noto-sans-thai-800 - thai */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Noto Sans Thai';
+  font-style: normal;
+  font-weight: 800;
+  src: url('noto-sans-thai-v20-thai-800.eot'); /* IE9 Compat Modes */
+  src: url('noto-sans-thai-v20-thai-800.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('noto-sans-thai-v20-thai-800.woff2') format('woff2'), /* Super Modern Browsers */
+       url('noto-sans-thai-v20-thai-800.woff') format('woff'), /* Modern Browsers */
+       url('noto-sans-thai-v20-thai-800.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('noto-sans-thai-v20-thai-800.svg#NotoSansThai') format('svg'); /* Legacy iOS */
+}
+/* noto-sans-thai-900 - thai */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Noto Sans Thai';
+  font-style: normal;
+  font-weight: 900;
+  src: url('noto-sans-thai-v20-thai-900.eot'); /* IE9 Compat Modes */
+  src: url('noto-sans-thai-v20-thai-900.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('noto-sans-thai-v20-thai-900.woff2') format('woff2'), /* Super Modern Browsers */
+       url('noto-sans-thai-v20-thai-900.woff') format('woff'), /* Modern Browsers */
+       url('noto-sans-thai-v20-thai-900.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('noto-sans-thai-v20-thai-900.svg#NotoSansThai') format('svg'); /* Legacy iOS */
+}

@@ -1,0 +1,33 @@
+<mat-progress-bar *ngIf="isShowLoading" mode="indeterminate"></mat-progress-bar>
+<div *ngIf="sharedService.isUserAuthenticated()" class="form-container-generic padding-20">
+    <span>{{ aboutModel.aboutInfo?.appName + ' ' + aboutModel.aboutInfo?.apiVersion }}</span>
+    <div class="padding-top-20"></div>
+    <button color="primary" mat-raised-button (click)="logout()">{{ 'home.logout' | transloco }}</button>
+</div>
+<div *ngIf="!sharedService.isUserAuthenticated()" class="padding-10">
+    <mat-card appearance="outlined">
+        <div class="form-container-generic padding-10">
+            <mat-form-field appearance="outline">
+                <mat-label>{{ 'home.username' | transloco }}</mat-label>
+                <input matInput placeholder="{{ 'home.username' | transloco }}" [(ngModel)]="homeModel.users!.username">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>{{ 'home.password' | transloco }}</mat-label>
+                <input matInput placeholder="{{ 'home.password' | transloco }}"
+                    [type]="hidePassword ? 'password' : 'text'" [(ngModel)]="homeModel.users!.password"
+                    (keydown)="preLogin($event)">
+                <mat-icon matSuffix class="icon-grey-small cursor-hover-pointer"
+                    (click)="hidePassword = !hidePassword">{{hidePassword ?
+                    'visibility_off' :
+                    'visibility'}}</mat-icon>
+            </mat-form-field>
+            <button color="primary" mat-raised-button (click)="login()" [disabled]="isShowLoading">{{ 'home.login' |
+                transloco
+                }}</button>
+        </div>
+    </mat-card>
+    <div class="padding-top-10">
+        <div fxFlex></div>
+        <span class="text-size-12">{{ aboutModel.aboutInfo?.apiVersion }}</span>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+<mat-progress-bar *ngIf="isShowLoading" mode="indeterminate"></mat-progress-bar>
+<div class="form-container-generic padding-20">
+    <span class="text-bold">{{ aboutModel.aboutInfo?.appName }}</span>
+    <div class="padding-top-10"></div>
+    <span class="text-size-14">{{ 'Version: ' + aboutModel.aboutInfo?.apiVersion }}</span>
+    <div class="padding-top-10"></div>
+    <span class="text-size-14">{{ 'Server Time: ' + aboutModel.aboutInfo?.serverDateTime }}</span>
+</div>

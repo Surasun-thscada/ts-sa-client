@@ -1,0 +1,27 @@
+{
+    "name": "จัดการผังระบบงาน",
+    "executeWorkflow": "Execute Workflow",
+    "buttons": {},
+    "tabs": {
+        "definitions": "Workflow Definitions",
+        "instances": "Workflow Instances",
+        "registry": "Workflow Registry"
+    },
+    "columns": {
+        "displayName": "Name",
+        "version": "Version",
+        "isPublished": "Published",
+        "isLatest": "Latest",
+        "createdAt": "Created",
+        "lastExecutedAt": "Lase Executed",
+        "finishedAt": "Finished",
+        "cancelledAt": "Canceled",
+        "faultedAt": "Faulted",
+        "instanceId": "Instance ID",
+        "definitionId": "Definition ID",
+        "correlationId": "Correlation ID",
+        "workflowName": "Workflow",
+        "workflowStatus": "Status"
+    },
+    "dialog": {}
+}

@@ -1,0 +1,14 @@
+{
+    "name": "ใบงาน",
+    "buttons": {},
+    "tabs": {},
+    "columns": {
+        "id": "ไอดี",
+        "ticketId": "รหัสใบงาน",
+        "serviceId": "หมายเลขบริการ", 
+        "product": "สินค้า",
+        "problem": "ปัญหา",
+        "creator": "ผู้สร้าง"
+    },
+    "dialog": {}
+}

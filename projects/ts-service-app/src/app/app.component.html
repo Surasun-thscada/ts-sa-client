@@ -1,0 +1,134 @@
+<div class="app-container">
+  <mat-toolbar color="primary" class="mat-elevation-z4 app-toolbar" style="z-index: 2">
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="padding-left-10">{{ sharedService.pageTitle }}</span>
+    <span class="spacer"></span>
+    <span class="padding-right-10">{{ sharedService.pageSubTitle }}</span>
+    <button mat-icon-button (click)="snavAccount.toggle()">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <button mat-button *ngIf="!sharedService.isUserAuthenticated()" (click)="changeActiveLanguage()">
+      {{ translocoService.getActiveLang() == 'en' ? 'ไทย' : 'EN' }}
+    </button>
+  </mat-toolbar>
+  <mat-sidenav-container class="app-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 0 : 0">
+    <mat-sidenav [opened]="mobileQuery.matches ? 'false' : 'true'" #snav
+      [mode]="mobileQuery.matches ? 'over' : getSideMenuMode()" [fixedInViewport]="mobileQuery.matches" fixedTopGap="55"
+      opened>
+      <!-- Home -->
+      <mat-nav-list style="width: 240px;">        
+        <mat-list-item routerLink=""
+          (click)="mobileQuery.matches || getSideMenuMode() == 'over' ? snav.toggle() : null"> 
+          <mat-icon  class="menu-icon" color="primary">Home</mat-icon>
+          <span>{{'menu.home' | transloco }}</span>
+        </mat-list-item>
+
+        <!-- Dashboard -->
+        <mat-list-item *ngIf="sharedService.isUserAuthenticated()" routerLink="/dashboard"
+          (click)="mobileQuery.matches || getSideMenuMode() == 'over' ? snav.toggle() : null"> 
+          <mat-icon class="menu-icon" color="primary">Dashboard</mat-icon>
+          <span>{{'menu.dashboard'| transloco }}</span>
+        </mat-list-item>
+
+        <!-- Job Menu -->
+        <mat-list-item *ngIf="sharedService.isUserAuthenticated()" (click)="toggleJobSubMenu();">
+          <div fxFlex fxLayoutAlign="start">
+            <mat-icon  class="menu-icon" color="primary">assignment</mat-icon>
+            <span class="full-width">{{'menu.job.main' | transloco }}</span>
+            <mat-icon class="menu-button" [ngClass]="{'rotated' : isShowWorkflowSubmenu}">expand_more</mat-icon>
+          </div>
+        </mat-list-item>
+        <mat-list-item *ngIf="sharedService.isUserAuthenticated() && isShowJobSubmenu"
+          routerLink="/job"
+          (click)="mobileQuery.matches || getSideMenuMode() == 'over' ? snav.toggle() : null"><span class="sub-menu">{{
+            'menu.job.jobManager' | transloco }}</span>
+        </mat-list-item>
+
+        <!-- Workflow Menu -->
+        <mat-list-item *ngIf="sharedService.isUserAuthenticated()" (click)="toggleWorkflowSubMenu();">
+          <div fxFlex fxLayoutAlign="start">
+            <mat-icon  class="menu-icon" color="primary">Workflow</mat-icon>
+            <span class="full-width">{{'menu.workflow.main' | transloco }}</span>
+            <mat-icon class="menu-button" [ngClass]="{'rotated' : isShowWorkflowSubmenu}">expand_more</mat-icon>
+          </div>
+        </mat-list-item>
+        <mat-list-item *ngIf="sharedService.isUserAuthenticated() && isShowWorkflowSubmenu"
+          routerLink="/workflow-manager"
+          (click)="mobileQuery.matches || getSideMenuMode() == 'over' ? snav.toggle() : null"><span class="sub-menu">{{
+            'menu.workflow.workflowManager' | transloco }}</span>
+        </mat-list-item>
+        <!-- Reports -->
+        <mat-list-item *ngIf="sharedService.isUserAuthenticated()" (click)="toggleReportsSubMenu()">
+              <div fxFlex fxLayoutAlign="start">
+                <mat-icon  class="menu-icon" color="primary">reports</mat-icon>
+                <span class="full-width">{{ 'menu.reports.main' | transloco }}</span>
+                <mat-icon class="menu-button" [ngClass]="{'rotated' : isShowReportsSubmenu}">expand_more</mat-icon>
+              </div>
+        </mat-list-item>
+        <mat-list-item *ngIf="sharedService.isUserAuthenticated() && isShowReportsSubmenu" routerLink="/workflow"
+          (click)="mobileQuery.matches || getSideMenuMode() == 'over' ? snav.toggle() : null"><span class="sub-menu">{{
+            'menu.reports.basic' | transloco }}</span>
+          </mat-list-item>
+
+        <!-- Project Menu -->
+        <mat-list-item *ngIf="sharedService.isUserAuthenticated()" (click)="toggleProjectSubMenu()">
+              <div fxFlex fxLayoutAlign="start">
+                <mat-icon  class="menu-icon" color="primary">project</mat-icon>
+                <span class="full-width">{{ 'menu.project.main' | transloco }}</span>
+                <mat-icon class="menu-button" [ngClass]="{'rotated' : isShowProjectSubmenu}">expand_more</mat-icon>
+              </div>
+        </mat-list-item>
+        <mat-list-item
+          *ngIf="sharedService.isUserAuthenticated() && sharedService.isAdministratorRole() && isShowProjectSubmenu"
+          routerLink="/project"
+          (click)="mobileQuery.matches || getSideMenuMode() == 'over' ? snav.toggle() : null"><span class="sub-menu">{{
+            'menu.project.projectManager' |
+            transloco }}</span>
+        </mat-list-item>
+        <!-- Setting Menu -->
+        <mat-list-item *ngIf="sharedService.isUserAuthenticated() && sharedService.isAdministratorRole()"
+          (click)="toggleSettingsSubMenu()">
+          <div fxFlex fxLayoutAlign="start">
+            <mat-icon  class="menu-icon" color="primary">settings</mat-icon>
+            <span class="full-width">{{ 'menu.settings.main' | transloco }}</span>
+            <mat-icon class="menu-button" [ngClass]="{'rotated' : isShowSettingSubmenu}">expand_more</mat-icon>
+          </div>
+        </mat-list-item>
+        <mat-list-item
+          *ngIf="sharedService.isUserAuthenticated() && sharedService.isAdministratorRole() && isShowSettingSubmenu"
+          routerLink="/user-settings"
+          (click)="mobileQuery.matches || getSideMenuMode() == 'over' ? snav.toggle() : null"><span class="sub-menu">{{
+            'menu.settings.userSettings' |transloco }}</span>
+        </mat-list-item>
+        <!-- About Menu -->
+        <mat-list-item routerLink="/about"
+          (click)="mobileQuery.matches || getSideMenuMode() == 'over' ? snav.toggle() : null"> 
+          <mat-icon  class="menu-icon" color="primary">info</mat-icon>
+          <span>{{ 'menu.about' |transloco }}</span>
+        </mat-list-item>
+        
+        <!-- Logout Menu -->
+        <mat-list-item *ngIf="sharedService.isUserAuthenticated()"
+          (click)="mobileQuery.matches || getSideMenuMode() == 'over' ? snav.toggle() : null; logout(true)">    
+          <mat-icon  class="menu-icon" color="primary">logout</mat-icon>
+          <span>{{'menu.logout' | transloco}}</span>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav [opened]="false" #snavAccount [mode]="mobileQuery.matches ? 'over' : 'over'" position="end"
+      [fixedInViewport]="mobileQuery.matches" fixedTopGap="55" opened>
+      <mat-nav-list style="width: 240px;" *transloco="let t">
+        <mat-list-item routerLink="/" (click)="snavAccount.toggle(); gotoHome()"><span>{{
+            t(sharedService.isUserAuthenticated() ? 'menu.logout' : 'menu.login') }}</span></mat-list-item>
+        <mat-list-item *ngIf="sharedService.isUserAuthenticated() && getUsername()!.toLowerCase() != 'system'"
+          routerLink="/user-profile" (click)="snavAccount.toggle()"><span>{{ 'menu.userProfile' | transloco
+            }}</span></mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

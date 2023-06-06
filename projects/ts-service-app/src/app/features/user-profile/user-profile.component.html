@@ -1,0 +1,129 @@
+<mat-progress-bar *ngIf="isShowLoading" mode="indeterminate"></mat-progress-bar>
+<mat-toolbar>
+    <div fxLayoutAlign="start stretch" fxLayoutGap="8px">
+        <button mat-button (click)="save()" [disabled]="!formSettingsUsersCrud.valid">
+            <mat-icon>save</mat-icon>{{ 'save' | transloco }}
+        </button>
+        <mat-divider [vertical]="true"></mat-divider>
+        <button mat-button (click)="getByID()">
+            <mat-icon>refresh</mat-icon>{{ 'refresh' | transloco }}
+        </button>
+    </div>
+</mat-toolbar>
+<div class="padding-10-exclude-top">
+    <mat-card appearance="outlined">
+        <mat-card-content>
+            <form #formSettingsUsersCrud="ngForm">
+                <mat-tab-group animationDuration="0ms">
+                    <mat-tab label="{{ 'tabGeneric.general' | transloco }}">
+                        <div class="form-container-generic">
+                            <div class="padding-top-20"></div>
+                            <div fxLayout="row" fxLayoutGap="15px">
+                                <mat-form-field appearance="fill" fxFlex>
+                                    <mat-label>{{ 'usp.columns.username' | transloco }}</mat-label>
+                                    <input matInput name="username"
+                                        placeholder="{{ 'usp.columns.username' | transloco }}" required
+                                        #username="ngModel" [(ngModel)]="userProfileModel.users!.username">
+                                    <mat-error *ngIf="username.hasError('required')">Username is required</mat-error>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill" fxFlex>
+                                    <mat-label>{{ 'usp.columns.password' | transloco }}</mat-label>
+                                    <input matInput type="password" name="password"
+                                        placeholder="{{ 'usp.columns.password' | transloco }}" required
+                                        #password="ngModel" [(ngModel)]="userProfileModel.users!.password">
+                                    <mat-error *ngIf="password.hasError('required')">Password is required</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div fxLayout="row" fxLayoutGap="15px">
+                                <mat-form-field appearance="fill" fxFlex>
+                                    <mat-label>{{ 'usp.columns.firstName' | transloco }}</mat-label>
+                                    <input matInput name="firstName"
+                                        placeholder="{{ 'usp.columns.firstName' | transloco }}" required
+                                        #firstName="ngModel" [(ngModel)]="userProfileModel.users!.firstName">
+                                    <mat-error *ngIf="firstName.hasError('required')">First Name is required</mat-error>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill" fxFlex>
+                                    <mat-label>{{ 'usp.columns.lastName' | transloco }}</mat-label>
+                                    <input matInput name="lastName"
+                                        placeholder="{{ 'usp.columns.lastName' | transloco }}" #lastName="ngModel"
+                                        [(ngModel)]="userProfileModel.users!.lastName">
+                                </mat-form-field>
+                            </div>
+                            <div fxLayout="row" fxLayoutGap="20px">
+                                <mat-form-field appearance="outline" fxFlex>
+                                    <mat-label>{{ 'usp.columns.userType' | transloco }}</mat-label>
+                                    <mat-select [disabled]="true" name="userType"
+                                        placeholder="{{ 'usp.columns.userType' | transloco }}"
+                                        [compareWith]="compareSelectObject"
+                                        [(ngModel)]="userProfileModel.users!.userType">
+                                        <mat-option *ngFor="let userType of userProfileModel.users!.listUserType"
+                                            [value]="userType">
+                                            {{ userType.fullName }}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="{{ 'tabGeneric.profile' | transloco }}">
+                        <div class="form-container-generic">
+                            <div class="padding-top-20"></div>
+                            <div fxLayout="row" fxLayoutGap="15px">
+                                <mat-form-field appearance="fill" fxFlex>
+                                    <mat-label>{{ 'usp.columns.email' | transloco }}</mat-label>
+                                    <input matInput name="email" placeholder="{{ 'usp.columns.email' | transloco }}"
+                                        #email="ngModel" [(ngModel)]="userProfileModel.users!.email">
+                                </mat-form-field>
+                                <mat-form-field appearance="fill" fxFlex>
+                                    <mat-label>{{ 'usp.columns.mobile' | transloco }}</mat-label>
+                                    <input matInput name="mobile" placeholder="{{ 'usp.columns.mobile' | transloco }}"
+                                        #mobile="ngModel" [(ngModel)]="userProfileModel.users!.mobile">
+                                </mat-form-field>
+                            </div>
+                            <div fxLayout="row" fxLayoutGap="15px">
+                                <mat-form-field appearance="outline" fxFlex>
+                                    <mat-label>{{ 'usp.columns.defaultLanguage' | transloco }}</mat-label>
+                                    <mat-select name="languages"
+                                        placeholder="{{ 'usp.columns.defaultLanguage' | transloco }}"
+                                        [compareWith]="compareSelectObject"
+                                        [(ngModel)]="userProfileModel.users!.languages">
+                                        <mat-option *ngFor="let languages of userProfileModel.users!.listLanguages"
+                                            [value]="languages">
+                                            {{ languages.fullName }}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" fxFlex>
+                                    <mat-label>{{ 'usp.columns.defaultTheme' | transloco }}</mat-label>
+                                    <mat-select name="themes" placeholder="{{ 'usp.columns.defaultTheme' | transloco }}"
+                                        [compareWith]="compareSelectObject"
+                                        [(ngModel)]="userProfileModel.users!.themes">
+                                        <mat-option *ngFor="let themes of userProfileModel.users!.listThemes"
+                                            [value]="themes">
+                                            {{ themes.fullName }}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div fxLayout="row" fxLayoutGap="15px">
+                                <mat-form-field appearance="outline" fxFlex>
+                                    <mat-label>{{ 'usp.columns.sideMenuMode' | transloco }}</mat-label>
+                                    <mat-select name="sideMenuMode"
+                                        placeholder="{{ 'usp.columns.sideMenuMode' | transloco }}"
+                                        [compareWith]="compareSelectObject"
+                                        [(ngModel)]="userProfileModel.users!.sideMenuMode">
+                                        <mat-option
+                                            *ngFor="let sideMenuMode of userProfileModel.users!.listSideMenuMode"
+                                            [value]="sideMenuMode">
+                                            {{ sideMenuMode.fullName }}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </mat-tab>
+                </mat-tab-group>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

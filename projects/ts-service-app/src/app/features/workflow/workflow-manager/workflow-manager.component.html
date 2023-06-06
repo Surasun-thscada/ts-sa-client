@@ -1,0 +1,263 @@
+<mat-progress-bar *ngIf="isShowLoading" mode="indeterminate"></mat-progress-bar>
+<mat-toolbar>
+    <div fxLayoutAlign="start stretch" fxLayoutGap="8px">
+        <button mat-button (click)="openPropertiesDialog(0, {})">
+            <mat-icon>add</mat-icon>{{ 'new' | transloco }}
+        </button>
+        <mat-divider [vertical]="true"></mat-divider>
+        <button mat-button (click)="getList()">
+            <mat-icon>refresh</mat-icon>{{ 'refresh' | transloco }}
+        </button>
+    </div>
+</mat-toolbar>
+<div class="padding-10-exclude-top">
+    <mat-tab-group animationDuration="0ms">
+        <mat-tab label="{{ 'wom.tabs.definitions' | transloco }}">
+            <div class="padding-top-10"></div>
+            <mat-card>
+                <mat-card-content>
+                    <div class="mat-elevation-z4">
+                        <mat-paginator [pageSizeOptions]="[10, 20, 25, 50, 100]" showFirstLastButtons></mat-paginator>
+                        <table id="{{ sharedService.getMatTableStyle() }}" mat-table
+                            [dataSource]="dataSourceWorkflowDefination">
+                            <ng-container matColumnDef="displayName">
+                                <th mat-header-cell *matHeaderCellDef class="text-center"><span>{{
+                                        'wom.columns.displayName'
+                                        |
+                                        transloco
+                                        }}</span></th>
+                                <td mat-cell *matCellDef="let item" class="text-left"><span>{{ item.displayName
+                                        }}</span></td>
+                            </ng-container>
+                            <ng-container matColumnDef="version">
+                                <th mat-header-cell *matHeaderCellDef class="text-center"><span>{{ 'wom.columns.version'
+                                        |
+                                        transloco
+                                        }}</span></th>
+                                <td mat-cell *matCellDef="let item" class="text-center"><span>{{ item.version }}</span>
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="isPublished">
+                                <th mat-header-cell *matHeaderCellDef class="text-center"><span>{{
+                                        'wom.columns.isPublished'
+                                        |
+                                        transloco }}</span>
+                                </th>
+                                <td mat-cell *matCellDef="let item" class="text-center">
+                                    <mat-checkbox [(ngModel)]="item.isPublished" disabled></mat-checkbox>
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="isLatest">
+                                <th mat-header-cell *matHeaderCellDef class="text-center"><span>{{
+                                        'wom.columns.isLatest' |
+                                        transloco }}</span>
+                                </th>
+                                <td mat-cell *matCellDef="let item" class="text-center">
+                                    <mat-checkbox [(ngModel)]="item.isLatest" disabled></mat-checkbox>
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="createdAt">
+                                <th mat-header-cell *matHeaderCellDef class="text-center"><span>{{
+                                        'wom.columns.createdAt'
+                                        |
+                                        transloco
+                                        }}</span></th>
+                                <td mat-cell *matCellDef="let item" class="text-center"><span>{{ item.createdAt | date:
+                                        'dd MMMM yyyy HH:mm' }}</span>
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="actions">
+                                <th mat-header-cell *matHeaderCellDef class="text-center"><span>{{ 'actions' | transloco
+                                        }}</span></th>
+                                <td mat-cell *matCellDef="let item" class="text-center">
+                                    <button mat-icon-button class="icon-grey-small"
+                                        matTooltip="{{ 'wom.executeWorkflow' | transloco }}"
+                                        (click)="executeWorkflowDefination()">
+                                        <mat-icon>play_circle</mat-icon>
+                                    </button>
+                                </td>
+                            </ng-container>
+                            <tr mat-header-row *matHeaderRowDef="displayedColumnsDefination"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumnsDefination;"></tr>
+                            <tr class="mat-row" *matNoDataRow>
+                                <td class="mat-cell" [colSpan]="displayedColumnsDefination.length" class="text-center">
+                                    {{ 'noData' | transloco }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </mat-tab>
+        <mat-tab label="{{ 'wom.tabs.instances' | transloco }}">
+            <div class="padding-top-10"></div>
+            <mat-card>
+                <mat-card-content>
+                    <div class="mat-elevation-z4">
+                        <mat-paginator [pageSizeOptions]="[10, 20, 25, 50, 100]" showFirstLastButtons></mat-paginator>
+                        <table id="{{ sharedService.getMatTableStyle() }}" mat-table
+                            [dataSource]="dataSourceWorkflowInstance">
+                            <ng-container matColumnDef="definitionId">
+                                <th mat-header-cell *matHeaderCellDef class="text-center"><span>{{
+                                        'wom.columns.definitionId'
+                                        |
+                                        transloco
+                                        }}</span></th>
+                                <td mat-cell *matCellDef="let item" class="text-left"><span>{{ item.definitionId
+                                        }}</span></td>
+                            </ng-container>
+                            <ng-container matColumnDef="correlationId">
+                                <th mat-header-cell *matHeaderCellDef class="text-center"><span>{{
+                                        'wom.columns.correlationId'
+                                        |
+                                        transloco
+                                        }}</span></th>
+                                <td mat-cell *matCellDef="let item" class="text-left"><span>{{ item.correlationId
+                                        }}</span></td>
+                            </ng-container>
+                            <ng-container matColumnDef="workflowName">
+                                <th mat-header-cell *matHeaderCellDef class="text-center"><span>{{
+                                        'wom.columns.workflowName'
+                                        |
+                                        transloco
+                                        }}</span></th>
+                                <td mat-cell *matCellDef="let item" class="text-left"><span>{{ item.workflowName
+                                        }}</span></td>
+                            </ng-container>
+                            <ng-container matColumnDef="version">
+                                <th mat-header-cell *matHeaderCellDef class="text-center"><span>{{ 'wom.columns.version'
+                                        |
+                                        transloco
+                                        }}</span></th>
+                                <td mat-cell *matCellDef="let item" class="text-center"><span>{{ item.version }}</span>
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="workflowStatus">
+                                <th mat-header-cell *matHeaderCellDef class="text-center"><span>{{
+                                        'wom.columns.workflowStatus'
+                                        |
+                                        transloco
+                                        }}</span></th>
+                                <td mat-cell *matCellDef="let item" class="text-center"><span>{{ item.workflowStatus
+                                        }}</span>
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="createdAt">
+                                <th mat-header-cell *matHeaderCellDef class="text-center"><span>{{
+                                        'wom.columns.createdAt'
+                                        |
+                                        transloco
+                                        }}</span></th>
+                                <td mat-cell *matCellDef="let item" class="text-center"><span>{{ item.createdAt | date:
+                                        'dd MMMM yyyy HH:mm' }}</span>
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="finishedAt">
+                                <th mat-header-cell *matHeaderCellDef class="text-center"><span>{{
+                                        'wom.columns.finishedAt'
+                                        |
+                                        transloco
+                                        }}</span></th>
+                                <td mat-cell *matCellDef="let item" class="text-center"><span>{{ item.finishedAt | date:
+                                        'dd MMMM yyyy HH:mm' }}</span>
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="lastExecutedAt">
+                                <th mat-header-cell *matHeaderCellDef class="text-center"><span>{{
+                                        'wom.columns.lastExecutedAt'
+                                        |
+                                        transloco
+                                        }}</span></th>
+                                <td mat-cell *matCellDef="let item" class="text-center"><span>{{ item.lastExecutedAt |
+                                        date:
+                                        'dd MMMM yyyy HH:mm' }}</span>
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="faultedAt">
+                                <th mat-header-cell *matHeaderCellDef class="text-center"><span>{{
+                                        'wom.columns.faultedAt'
+                                        |
+                                        transloco
+                                        }}</span></th>
+                                <td mat-cell *matCellDef="let item" class="text-center"><span>{{ item.faultedAt | date:
+                                        'dd MMMM yyyy HH:mm' }}</span>
+                                </td>
+                            </ng-container>
+                            <tr mat-header-row *matHeaderRowDef="displayedColumnsInstance"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumnsInstance;"></tr>
+                            <tr class="mat-row" *matNoDataRow>
+                                <td class="mat-cell" [colSpan]="displayedColumnsInstance.length" class="text-center">
+                                    {{ 'noData' | transloco }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </mat-tab>
+        <mat-tab label="{{ 'wom.tabs.registry' | transloco }}">
+            <div class="padding-top-10"></div>
+            <mat-card>
+                <mat-card-content>
+                    <div class="mat-elevation-z4">
+                        <mat-paginator [pageSizeOptions]="[10, 20, 25, 50, 100]" showFirstLastButtons></mat-paginator>
+                        <table id="{{ sharedService.getMatTableStyle() }}" mat-table
+                            [dataSource]="dataSourceWorkflowRegistry">
+                            <ng-container matColumnDef="displayName">
+                                <th mat-header-cell *matHeaderCellDef class="text-center"><span>{{
+                                        'wom.columns.displayName'
+                                        |
+                                        transloco
+                                        }}</span></th>
+                                <td mat-cell *matCellDef="let item" class="text-left"><span>{{ item.displayName
+                                        }}</span></td>
+                            </ng-container>
+                            <ng-container matColumnDef="version">
+                                <th mat-header-cell *matHeaderCellDef class="text-center"><span>{{ 'wom.columns.version'
+                                        |
+                                        transloco
+                                        }}</span></th>
+                                <td mat-cell *matCellDef="let item" class="text-center"><span>{{ item.version }}</span>
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="isPublished">
+                                <th mat-header-cell *matHeaderCellDef class="text-center"><span>{{
+                                        'wom.columns.isPublished'
+                                        |
+                                        transloco }}</span>
+                                </th>
+                                <td mat-cell *matCellDef="let item" class="text-center">
+                                    <mat-checkbox [(ngModel)]="item.isPublished" disabled></mat-checkbox>
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="isLatest">
+                                <th mat-header-cell *matHeaderCellDef class="text-center"><span>{{
+                                        'wom.columns.isLatest' |
+                                        transloco }}</span>
+                                </th>
+                                <td mat-cell *matCellDef="let item" class="text-center">
+                                    <mat-checkbox [(ngModel)]="item.isLatest" disabled></mat-checkbox>
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="actions">
+                                <th mat-header-cell *matHeaderCellDef class="text-center"><span>{{ 'actions' | transloco
+                                        }}</span></th>
+                                <td mat-cell *matCellDef="let item" class="text-center">
+                                    <button mat-icon-button class="icon-grey-small"
+                                        matTooltip="{{ 'wom.executeWorkflow' | transloco }}"
+                                        (click)="executeWorkflowRegistry()">
+                                        <mat-icon>play_circle</mat-icon>
+                                    </button>
+                                </td>
+                            </ng-container>
+                            <tr mat-header-row *matHeaderRowDef="displayedColumnsRegistry"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumnsRegistry;"></tr>
+                            <tr class="mat-row" *matNoDataRow>
+                                <td class="mat-cell" [colSpan]="displayedColumnsRegistry.length" class="text-center">
+                                    {{ 'noData' | transloco }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </mat-tab>
+    </mat-tab-group>
+</div>

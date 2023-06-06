@@ -1,0 +1,130 @@
+<mat-progress-bar *ngIf="isShowLoading" mode="indeterminate"></mat-progress-bar>
+<h1 mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle><span>{{ sharedService.dialogTitle + '
+        > ' +
+        userSettingsCrudModel.users?.username }}</span></h1>
+<div mat-dialog-content>
+    <mat-card appearance="outlined">
+        <mat-card-content>
+            <form #formSettingsUsersCrud="ngForm">
+                <mat-tab-group animationDuration="0ms">
+                    <mat-tab label="{{ 'tabGeneric.general' | transloco }}">
+                        <div class="form-container-generic">
+                            <div class="padding-top-20"></div>
+                            <div fxLayout="row" fxLayoutGap="15px">
+                                <mat-form-field appearance="fill" fxFlex>
+                                    <mat-label>{{ 'uss.columns.username' | transloco }}</mat-label>
+                                    <input matInput name="username"
+                                        placeholder="{{ 'uss.columns.username' | transloco }}" required
+                                        #username="ngModel" [(ngModel)]="userSettingsCrudModel.users!.username">
+                                    <mat-error *ngIf="username.hasError('required')">Username is required</mat-error>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill" fxFlex>
+                                    <mat-label>{{ 'uss.columns.password' | transloco }}</mat-label>
+                                    <input matInput type="password" name="password"
+                                        placeholder="{{ 'uss.columns.password' | transloco }}" required
+                                        #password="ngModel" [(ngModel)]="userSettingsCrudModel.users!.password">
+                                    <mat-error *ngIf="password.hasError('required')">Password is required</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div fxLayout="row" fxLayoutGap="15px">
+                                <mat-form-field appearance="fill" fxFlex>
+                                    <mat-label>{{ 'uss.columns.firstName' | transloco }}</mat-label>
+                                    <input matInput name="firstName"
+                                        placeholder="{{ 'uss.columns.firstName' | transloco }}" required
+                                        #firstName="ngModel" [(ngModel)]="userSettingsCrudModel.users!.firstName">
+                                    <mat-error *ngIf="firstName.hasError('required')">First Name is required</mat-error>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill" fxFlex>
+                                    <mat-label>{{ 'uss.columns.lastName' | transloco }}</mat-label>
+                                    <input matInput name="lastName"
+                                        placeholder="{{ 'uss.columns.lastName' | transloco }}" #lastName="ngModel"
+                                        [(ngModel)]="userSettingsCrudModel.users!.lastName">
+                                </mat-form-field>
+                            </div>
+                            <div fxLayout="row" fxLayoutGap="20px">
+                                <mat-form-field appearance="outline" fxFlex>
+                                    <mat-label>{{ 'uss.columns.userType' | transloco }}</mat-label>
+                                    <mat-select name="userType" placeholder="{{ 'uss.columns.userType' | transloco }}"
+                                        [compareWith]="compareSelectObject"
+                                        [(ngModel)]="userSettingsCrudModel.users!.userType">
+                                        <mat-option *ngFor="let userType of userSettingsCrudModel.users!.listUserType"
+                                            [value]="userType">
+                                            {{ userType.fullName }}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="{{ 'tabGeneric.profile' | transloco }}">
+                        <div class="form-container-generic">
+                            <div class="padding-top-20"></div>
+                            <div fxLayout="row" fxLayoutGap="15px">
+                                <mat-form-field appearance="fill" fxFlex>
+                                    <mat-label>{{ 'uss.columns.email' | transloco }}</mat-label>
+                                    <input matInput name="email" placeholder="{{ 'uss.columns.email' | transloco }}"
+                                        #email="ngModel" [(ngModel)]="userSettingsCrudModel.users!.email">
+                                </mat-form-field>
+                                <mat-form-field appearance="fill" fxFlex>
+                                    <mat-label>{{ 'uss.columns.mobile' | transloco }}</mat-label>
+                                    <input matInput name="mobile" placeholder="{{ 'uss.columns.mobile' | transloco }}"
+                                        #mobile="ngModel" [(ngModel)]="userSettingsCrudModel.users!.mobile">
+                                </mat-form-field>
+                            </div>
+                            <div fxLayout="row" fxLayoutGap="15px">
+                                <mat-form-field appearance="outline" fxFlex>
+                                    <mat-label>{{ 'uss.columns.defaultLanguage' | transloco }}</mat-label>
+                                    <mat-select name="languages"
+                                        placeholder="{{ 'uss.columns.defaultLanguage' | transloco }}"
+                                        [compareWith]="compareSelectObject"
+                                        [(ngModel)]="userSettingsCrudModel.users!.languages">
+                                        <mat-option *ngFor="let languages of userSettingsCrudModel.users!.listLanguages"
+                                            [value]="languages">
+                                            {{ languages.fullName }}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" fxFlex>
+                                    <mat-label>{{ 'uss.columns.defaultTheme' | transloco }}</mat-label>
+                                    <mat-select name="themes" placeholder="{{ 'uss.columns.defaultTheme' | transloco }}"
+                                        [compareWith]="compareSelectObject"
+                                        [(ngModel)]="userSettingsCrudModel.users!.themes">
+                                        <mat-option *ngFor="let themes of userSettingsCrudModel.users!.listThemes"
+                                            [value]="themes">
+                                            {{ themes.fullName }}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div fxLayout="row" fxLayoutGap="15px">
+                                <mat-form-field appearance="outline" fxFlex>
+                                    <mat-label>{{ 'uss.columns.sideMenuMode' | transloco }}</mat-label>
+                                    <mat-select name="sideMenuMode"
+                                        placeholder="{{ 'uss.columns.sideMenuMode' | transloco }}"
+                                        [compareWith]="compareSelectObject"
+                                        [(ngModel)]="userSettingsCrudModel.users!.sideMenuMode">
+                                        <mat-option
+                                            *ngFor="let sideMenuMode of userSettingsCrudModel.users!.listSideMenuMode"
+                                            [value]="sideMenuMode">
+                                            {{ sideMenuMode.fullName }}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </mat-tab>
+                </mat-tab-group>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
+<div mat-dialog-actions>
+    <div class="padding-left-20 padding-bottom-10">
+        <button mat-raised-button aria-label="Save" (click)="save()" [disabled]="!formSettingsUsersCrud.valid">
+            <mat-icon>save</mat-icon>Save
+        </button>
+        <button mat-raised-button aria-label="Cancel" (click)="cancel()">
+            <mat-icon>cancel</mat-icon>Cancel
+        </button>
+    </div>
+</div>

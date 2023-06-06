@@ -1,0 +1,112 @@
+{
+  "ok": "Ok",
+  "cancel": "Cancel",
+  "save": "Save",
+  "new": "New",
+  "add": "Add",
+  "refresh": "Refresh",
+  "reset": "Reset",
+  "back": "Back",
+  "view": "View",
+  "edit": "Edit",
+  "settings": "Settings",
+  "delete": "Delete",
+  "duplicate": "Duplicate",
+  "filter": "Filter",
+  "actions": "Actions",
+  "noData": "No data found",
+  "calculate": "Calculate",
+  "general": "General",
+  "download": "Download",
+  "upload": "Upload",
+  "export": "Export",
+  "xlsx": "XLSX",
+  "pdf": "PDF",
+  "csv": "CSV",
+  "moveUp": "Move Up",
+  "moveDown": "Move Down",
+  "properties": "Properties",
+  "singleDevice": "Single Device",
+  "allDevices": "All Devices",
+  "rawData": "Raw Data",
+  "menu": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "reports": {
+      "main": "Reports",
+      "basic": "Basic Reports"
+    },
+    "workflow": {
+      "main": "Workflow",
+      "workflowManager": "Workflow Manager"
+    },
+    "project": {
+      "main": "Project",
+      "projectManager": "Project Manager"
+    },
+    "settings": {
+      "main": "Settings",
+      "userSettings": "User"
+    },
+    "job": {
+      "main": "Job",
+      "jobManager": "Job Manager",
+      "createJob": "Create Job"
+    },
+    "userProfile": "User Profile",
+    "about": "About",
+    "login": "Login",
+    "logout": "Logout"
+  },
+  "title": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "reports": {
+      "main": "Reports",
+      "basic": "Basic Reports"
+    },
+    "workflow": {
+      "main": "Workflow",
+      "workflowManager": "Workflow Manager"
+    },
+    "job": {
+      "main": "Job",
+      "jobManager": "Job Manager"
+    },
+    "settings": {
+      "main": "Settings",
+      "userSettings": "User"
+    },
+    "userProfile": "User Profile",
+    "about": "About",
+    "login": "Login",
+    "logout": "Logout"
+  },
+  "calendar": {
+    "day": "Day",
+    "date": "Date",
+    "week": "Week",
+    "month": "Month",
+    "quarter": "Quarter",
+    "year": "Year"
+  },
+  "columnsGeneric": {
+    "id": "ID",
+    "name": "Name",
+    "description": "Description",
+    "enable": "Enable",
+    "ord": "Order",
+    "mode": "Mode"
+  },
+  "tabGeneric": {
+    "general": "General",
+    "profile": "Profile"
+  },
+  "dialog": {
+    "simpleConfirmDelete": {
+      "title": "Confirm delete ?",
+      "message": "Are you sure to delete '{{ name }}' ?",
+      "message2Params": "Are you sure to delete {{ param1 }} '{{ param2 }}' ?"
+    }
+  }
+}
